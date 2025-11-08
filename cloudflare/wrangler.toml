@@ -1,0 +1,19 @@
+name = "hackerhardware-net-worker"
+type = "javascript"
+account_id = ""  # Add your Cloudflare account ID
+workers_dev = true
+route = "hackerhardware.net/*"
+zone_id = ""  # Add your zone ID
+
+[env.production]
+name = "hackerhardware-net-worker-prod"
+route = "hackerhardware.net/*"
+
+[[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = ""  # Add your KV namespace ID
+
+[build]
+command = ""
+[build.upload]
+format = "service-worker"
