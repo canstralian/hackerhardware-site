@@ -9,6 +9,11 @@ const BLOCKED_COUNTRIES = []; // Add country codes to block if needed
 
 // Rate limiting using Cloudflare KV
 async function checkRateLimit(ip) {
+  if (typeof RATE_LIMIT_KV === "undefined") {
+    // KV binding is missing; disable rate limiting gracefully
+    // Optionally, log a warning if logging is available
+    return true;
+  }
   const key = `rate_limit:${ip}`;
   const count = await RATE_LIMIT_KV.get(key);
   
