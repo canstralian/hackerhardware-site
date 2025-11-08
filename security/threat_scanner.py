@@ -16,33 +16,51 @@ class ThreatScanner:
     def __init__(self):
         self.scan_results = []
     
-    async def port_scan(self, target: str, ports: List[int] = None) -> Dict:
-        """Perform port scan on target"""
+    async def port_scan(self, target: str, ports: List[int] = None,
+                        timeout: float = 1.0) -> Dict:
+        """Perform port scan on target with timeout handling"""
         if ports is None:
             ports = [22, 80, 443, 8000, 8080]
-        
+
+        # Validate target format
+        if not target or not isinstance(target, str):
+            logger.error("Invalid target provided for port scan")
+            return {
+                "scan_type": "port_scan",
+                "target": target,
+                "error": "Invalid target format",
+                "timestamp": datetime.utcnow().isoformat(),
+                "risk_level": "unknown"
+            }
+
         logger.info(f"Starting port scan on {target}")
         open_ports = []
-        
+
         for port in ports:
             try:
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                sock.settimeout(1)
+                sock.settimeout(timeout)
                 result = sock.connect_ex((target, port))
                 if result == 0:
                     open_ports.append(port)
                 sock.close()
+            except socket.timeout:
+                logger.warning(f"Timeout scanning port {port} on {target}")
+            except socket.gaierror as e:
+                logger.error(f"DNS resolution failed for {target}: {e}")
+                break
             except Exception as e:
                 logger.error(f"Error scanning port {port}: {e}")
-        
+
         scan_result = {
             "scan_type": "port_scan",
             "target": target,
             "open_ports": open_ports,
             "timestamp": datetime.utcnow().isoformat(),
-            "risk_level": "high" if len(open_ports) > 3 else "medium" if open_ports else "low"
+            "risk_level": ("high" if len(open_ports) > 3
+                          else "medium" if open_ports else "low")
         }
-        
+
         self.scan_results.append(scan_result)
         return scan_result
     
@@ -91,13 +109,30 @@ class ThreatScanner:
         """Get all scan results"""
         return self.scan_results
     
-    async def continuous_monitoring(self, targets: List[str], interval: int = 3600):
-        """Continuous security monitoring"""
+    async def continuous_monitoring(self, targets: List[str],
+                                    interval: int = 3600):
+        """Continuous security monitoring with validation"""
+        # Validate inputs
+        if not targets or not isinstance(targets, list):
+            logger.error("Invalid targets list for continuous monitoring")
+            return
+
+        if interval < 60:
+            logger.warning("Interval too short, setting to minimum of 60s")
+            interval = 60
+
         logger.info("Starting continuous security monitoring")
-        
+
         while True:
             for target in targets:
-                await self.port_scan(target)
-                await self.vulnerability_scan(target)
-            
+                if not target or not isinstance(target, str):
+                    logger.warning(f"Skipping invalid target: {target}")
+                    continue
+
+                try:
+                    await self.port_scan(target)
+                    await self.vulnerability_scan(target)
+                except Exception as e:
+                    logger.error(f"Error monitoring {target}: {e}")
+
             await asyncio.sleep(interval)
