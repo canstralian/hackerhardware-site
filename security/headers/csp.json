@@ -1,0 +1,62 @@
+{
+  "content_security_policy": {
+    "version": "1.0",
+    "description": "Content Security Policy configuration for HackerHardware.net",
+    "policies": {
+      "default-src": ["'self'"],
+      "script-src": [
+        "'self'",
+        "'unsafe-inline'",
+        "https://cdn.jsdelivr.net"
+      ],
+      "style-src": [
+        "'self'",
+        "'unsafe-inline'",
+        "https://fonts.googleapis.com"
+      ],
+      "img-src": [
+        "'self'",
+        "data:",
+        "https:"
+      ],
+      "font-src": [
+        "'self'",
+        "data:",
+        "https://fonts.gstatic.com"
+      ],
+      "connect-src": [
+        "'self'",
+        "https://api.hackerhardware.net",
+        "https://*.hackerhardware.net"
+      ],
+      "media-src": ["'self'"],
+      "object-src": ["'none'"],
+      "frame-src": ["'none'"],
+      "frame-ancestors": ["'none'"],
+      "form-action": ["'self'"],
+      "base-uri": ["'self'"],
+      "manifest-src": ["'self'"],
+      "worker-src": ["'self'"],
+      "upgrade-insecure-requests": true,
+      "block-all-mixed-content": true
+    },
+    "reporting": {
+      "report-uri": "/api/v1/csp-report",
+      "report-to": "csp-endpoint"
+    }
+  },
+  "report_to": {
+    "group": "csp-endpoint",
+    "max_age": 10886400,
+    "endpoints": [
+      {
+        "url": "https://api.hackerhardware.net/api/v1/csp-report"
+      }
+    ]
+  },
+  "notes": {
+    "unsafe-inline": "Required for inline styles/scripts. Consider using nonces in production.",
+    "upgrade-insecure-requests": "Automatically upgrades HTTP to HTTPS",
+    "review": "Review and tighten policy before production deployment"
+  }
+}

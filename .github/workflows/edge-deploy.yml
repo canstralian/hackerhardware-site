@@ -1,0 +1,57 @@
+name: Deploy Edge Workers
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'edge/**'
+      - 'wrangler.toml'
+      - '.github/workflows/edge-deploy.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Cloudflare Workers
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+        if: hashFiles('package-lock.json') != ''
+
+      - name: Run tests
+        run: npm test
+        if: hashFiles('package.json') != ''
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy --env production
+
+      - name: Notify deployment
+        if: success()
+        run: |
+          echo "✅ Edge workers deployed successfully"
+          echo "Region: Global Edge Network"
+          echo "Commit: ${{ github.sha }}"
+
+      - name: Notify Taskade
+        if: success() && github.ref == 'refs/heads/main'
+        run: |
+          curl -X POST https://api.taskade.com/v1/projects/${{ secrets.TASKADE_PROJECT_ID }}/tasks \
+            -H "Authorization: Bearer ${{ secrets.TASKADE_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"title\": \"✅ Edge workers deployed\", \"status\": \"Completed\", \"description\": \"Commit: ${{ github.sha }}\"}" || true

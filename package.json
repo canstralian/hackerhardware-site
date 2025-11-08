@@ -1,0 +1,37 @@
+{
+  "name": "hackerhardware-net",
+  "version": "1.0.0",
+  "description": "Edge autonomy infrastructure - HackerHardware.net",
+  "main": "edge/workers/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "deploy:staging": "wrangler deploy --env staging",
+    "deploy:production": "wrangler deploy --env production",
+    "test": "echo \"No tests specified\" && exit 0",
+    "lint": "eslint edge/**/*.js",
+    "format": "prettier --write edge/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/canstralian/hackerhardware-site.git"
+  },
+  "keywords": [
+    "edge-computing",
+    "cloudflare-workers",
+    "fastapi",
+    "cybersecurity",
+    "zero-trust"
+  ],
+  "author": "HackerHardware Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/canstralian/hackerhardware-site/issues"
+  },
+  "homepage": "https://hackerhardware.net",
+  "devDependencies": {
+    "wrangler": "^3.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0"
+  }
+}

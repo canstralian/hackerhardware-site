@@ -1,0 +1,53 @@
+# Cloudflare Workers Configuration
+# HackerHardware.net Edge Computing Layer
+
+name = "hackerhardware-edge"
+main = "edge/workers/index.js"
+compatibility_date = "2024-01-01"
+account_id = "" # Add your Cloudflare account ID
+workers_dev = true
+
+# Route configuration (update with your domain)
+# routes = [
+#   { pattern = "hackerhardware.net/*", zone_name = "hackerhardware.net" }
+# ]
+
+# Environment variables
+[env.production]
+name = "hackerhardware-edge-production"
+vars = { ENVIRONMENT = "production" }
+
+[env.staging]
+name = "hackerhardware-edge-staging"
+vars = { ENVIRONMENT = "staging" }
+
+# KV Namespaces (for edge caching)
+# [[kv_namespaces]]
+# binding = "CACHE"
+# id = "your-kv-namespace-id"
+# preview_id = "your-preview-kv-namespace-id"
+
+# Durable Objects (for stateful edge computing)
+# [[durable_objects.bindings]]
+# name = "RATE_LIMITER"
+# class_name = "RateLimiter"
+# script_name = "hackerhardware-edge"
+
+# R2 Buckets (for edge storage)
+# [[r2_buckets]]
+# binding = "ASSETS"
+# bucket_name = "hackerhardware-assets"
+# preview_bucket_name = "hackerhardware-assets-preview"
+
+# Build configuration
+[build]
+command = "npm run build"
+# cwd = "edge"
+
+# Observability
+[observability]
+enabled = true
+
+# Limits
+[limits]
+cpu_ms = 50

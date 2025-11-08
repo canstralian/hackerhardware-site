@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HackerHardware.net - Edge Computing, AI, and Cybersecurity Infrastructure">
+    <meta name="keywords" content="edge computing, AI, cybersecurity, zero trust, infrastructure">
+    <meta name="author" content="HackerHardware">
+
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.hackerhardware.net;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="HackerHardware.net">
+    <meta property="og:description" content="Living ecosystem merging edge computing, AI, and cybersecurity">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hackerhardware.net">
+
+    <title>HackerHardware.net - Edge Autonomy Infrastructure</title>
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="/assets/css/main.css" as="style">
+    <link rel="preload" href="/assets/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item logo" href="/">
+                    <span class="logo-icon">◢</span>
+                    <span class="logo-text">HackerHardware</span>
+                </a>
+                <button class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="#architecture">Architecture</a>
+                    <a class="navbar-item" href="#edge">Edge Computing</a>
+                    <a class="navbar-item" href="#security">Security</a>
+                    <a class="navbar-item" href="/docs">Docs</a>
+                    <a class="navbar-item" href="/api/v1/healthz">Status</a>
+                    <button class="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light mode">
+                        <span class="theme-icon">◐</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    <span class="gradient-text">Edge Autonomy</span> Infrastructure
+                </h1>
+                <p class="subtitle">
+                    A living ecosystem where every node learns, adapts, and integrates seamlessly with the network.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-value" id="nodes-count">—</div>
+                        <div class="stat-label">Active Nodes</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="uptime">—</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="requests">—</div>
+                        <div class="stat-label">Requests/s</div>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <a href="/docs/quickstart" class="button button-primary">Get Started</a>
+                    <a href="https://github.com/canstralian/hackerhardware-site" class="button button-secondary">
+                        <span class="button-icon">⌘</span> View on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="section">
+        <div class="container">
+            <h2 class="section-title">System Architecture</h2>
+            <div class="architecture-grid">
+                <div class="architecture-card">
+                    <div class="card-icon">⚡</div>
+                    <h3 class="card-title">Edge Computing</h3>
+                    <p class="card-description">
+                        Cloudflare Workers providing sub-10ms response times with intelligent routing and caching.
+                    </p>
+                    <a href="#edge" class="card-link">Learn more →</a>
+                </div>
+                <div class="architecture-card">
+                    <div class="card-icon">🔒</div>
+                    <h3 class="card-title">Zero Trust Security</h3>
+                    <p class="card-description">
+                        Multi-layer security with WAF, DDoS protection, and tokenized deployments.
+                    </p>
+                    <a href="#security" class="card-link">Learn more →</a>
+                </div>
+                <div class="architecture-card">
+                    <div class="card-icon">🤖</div>
+                    <h3 class="card-title">AI-Powered APIs</h3>
+                    <p class="card-description">
+                        FastAPI backend with self-healing capabilities and adaptive load balancing.
+                    </p>
+                    <a href="/api/v1/docs" class="card-link">API Docs →</a>
+                </div>
+                <div class="architecture-card">
+                    <div class="card-icon">🔄</div>
+                    <h3 class="card-title">CI/CD Pipeline</h3>
+                    <p class="card-description">
+                        Automated deployments with GitHub Actions, preview environments, and rollback capabilities.
+                    </p>
+                    <a href="/docs/deployment" class="card-link">Learn more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Edge Computing Section -->
+    <section id="edge" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Edge Computing Layer</h2>
+            <div class="content-grid">
+                <div class="content-text">
+                    <h3>Distributed Intelligence</h3>
+                    <p>
+                        Our edge infrastructure runs on Cloudflare's global network, bringing computation
+                        closer to users and enabling real-time decision making at the network edge.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Sub-10ms latency worldwide</li>
+                        <li>Automatic failover and load balancing</li>
+                        <li>Edge caching with intelligent invalidation</li>
+                        <li>Real-time metrics and observability</li>
+                    </ul>
+                </div>
+                <div class="content-visual">
+                    <div class="code-block">
+                        <div class="code-header">edge/workers/router.js</div>
+                        <pre><code>export default {
+  async fetch(request, env) {
+    // Edge routing logic
+    const url = new URL(request.url);
+
+    // Health check
+    if (url.pathname === '/healthz') {
+      return new Response('OK', { status: 200 });
+    }
+
+    // Route to backend
+    return fetch(env.BACKEND_URL + url.pathname);
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section id="security" class="section">
+        <div class="container">
+            <h2 class="section-title">Security & Compliance</h2>
+            <div class="security-grid">
+                <div class="security-item">
+                    <h4>Zero Trust Architecture</h4>
+                    <p>Never trust, always verify. Every request is authenticated and authorized.</p>
+                </div>
+                <div class="security-item">
+                    <h4>WAF Protection</h4>
+                    <p>Web Application Firewall with custom rules and OWASP coverage.</p>
+                </div>
+                <div class="security-item">
+                    <h4>DDoS Mitigation</h4>
+                    <p>Automatic detection and mitigation of distributed attacks.</p>
+                </div>
+                <div class="security-item">
+                    <h4>Encryption</h4>
+                    <p>TLS 1.3 everywhere with certificate pinning and HSTS.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>HackerHardware.net</h4>
+                    <p>Edge autonomy infrastructure for the modern web.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/docs">Documentation</a></li>
+                        <li><a href="/api/v1/docs">API Reference</a></li>
+                        <li><a href="https://github.com/canstralian/hackerhardware-site">GitHub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>System</h4>
+                    <ul>
+                        <li><a href="/api/v1/healthz">Health Status</a></li>
+                        <li><a href="/api/v1/metrics">Metrics</a></li>
+                        <li><a href="/security">Security Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HackerHardware.net. Built with edge autonomy.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js" defer></script>
+    <script src="/assets/js/theme.js" defer></script>
+    <script src="/assets/js/metrics.js" defer></script>
+</body>
+</html>
