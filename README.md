@@ -99,6 +99,16 @@ docker-compose up -d
 
 See [docs/deployment.md](docs/deployment.md) for detailed deployment instructions.
 
+#### Required GitHub Secrets for Cloudflare Pages Deployment
+
+Configure the following secrets in your GitHub repository settings (`Settings > Secrets and variables > Actions`):
+
+- **CF_API_TOKEN**: Your Cloudflare API token with permissions for Pages deployment
+  - Create at: https://dash.cloudflare.com/profile/api-tokens
+  - Required permissions: Cloudflare Pages (Edit)
+- **CF_ACCOUNT_ID**: Your Cloudflare account ID
+  - Find at: https://dash.cloudflare.com/ (in the URL after selecting your account)
+
 ## Security
 
 This project implements a zero-trust security model. See [docs/security.md](docs/security.md) for details.
