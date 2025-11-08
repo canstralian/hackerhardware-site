@@ -8,9 +8,9 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from contextlib import asynccontextmanager
 import logging
 
-from api.routers import health, nodes, security, intelligence
-from api.core.config import settings
-from api.core.security import verify_token
+from routers import health, nodes, security, intelligence
+from core.config import settings
+from core.security import verify_token
 
 # Configure logging
 logging.basicConfig(
