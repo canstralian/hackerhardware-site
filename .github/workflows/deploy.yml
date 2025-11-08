@@ -1,0 +1,61 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: |
+          if [ -f "package.json" ]; then
+            corepack prepare pnpm@latest --activate && pnpm install
+          else
+            echo "No package.json found - skipping dependency installation"
+          fi
+
+      - name: Build
+        run: |
+          if [ -f "package.json" ]; then
+            pnpm build
+          else
+            echo "No package.json found - skipping build step"
+          fi
+
+      - name: Determine deployment directory
+        id: deploy-dir
+        run: |
+          if [ -d ".svelte-kit/cloudflare" ]; then
+            echo "directory=.svelte-kit/cloudflare" >> $GITHUB_OUTPUT
+          else
+            echo "directory=." >> $GITHUB_OUTPUT
+          fi
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: "hackerhardware-site"
+          directory: ${{ steps.deploy-dir.outputs.directory }}
+
+      - name: Validate Cloudflare Authentication
+        run: |
+          npm install -g wrangler
+          wrangler whoami
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
