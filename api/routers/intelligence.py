@@ -86,7 +86,7 @@ async def submit_learning_data(event_type: str, data: dict):
         "data": data,
         "timestamp": datetime.utcnow().isoformat()
     })
-    
+
     return {
         "status": "accepted",
         "message": "Data submitted for analysis",

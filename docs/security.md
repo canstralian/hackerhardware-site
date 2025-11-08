@@ -26,9 +26,10 @@ HackerHardware.net implements a comprehensive zero-trust security architecture t
 ### JWT-Based Authentication
 
 ```python
-# Generate token
+"""Generate JWT access token for user authentication."""
 from api.core.security import create_access_token
 
+# Create token with user ID
 token = create_access_token({"sub": user_id})
 ```
 
@@ -37,8 +38,10 @@ token = create_access_token({"sub": user_id})
 All service-to-service communication uses mutual TLS:
 
 ```python
+"""Configure mutual TLS for service-to-service communication."""
 from security.zero_trust import ZeroTrustManager
 
+# Initialize zero-trust manager and create SSL context
 zt = ZeroTrustManager()
 ssl_context = zt.create_ssl_context()
 ```
@@ -89,8 +92,10 @@ ssl_context = zt.create_ssl_context()
 ### Continuous Monitoring
 
 ```python
+"""Perform security scanning on target infrastructure."""
 from security.threat_scanner import ThreatScanner
 
+# Initialize scanner and perform port scan
 scanner = ThreatScanner()
 result = await scanner.port_scan("target-ip")
 ```
@@ -98,8 +103,10 @@ result = await scanner.port_scan("target-ip")
 ### Anomaly Detection
 
 ```python
+"""Analyze threat patterns using adaptive defense AI."""
 from intelligence.adaptive_defense import AdaptiveDefense
 
+# Initialize adaptive defense and analyze threats
 defense = AdaptiveDefense()
 analysis = defense.analyze_threat_pattern(threats)
 ```
@@ -130,8 +137,10 @@ analysis = defense.analyze_threat_pattern(threats)
 All security events are logged:
 
 ```python
+"""Log security events for audit trail and compliance."""
 from security.zero_trust import ZeroTrustManager
 
+# Initialize manager and log access attempt
 zt = ZeroTrustManager()
 zt.audit_log("access_attempt", {
     "user": "user_id",
@@ -151,8 +160,10 @@ zt.audit_log("access_attempt", {
 ### Automated Testing
 
 ```python
+"""Perform automated penetration testing on target systems."""
 from security.threat_scanner import ThreatScanner
 
+# Initialize scanner and run penetration test
 scanner = ThreatScanner()
 await scanner.penetration_test("target")
 ```

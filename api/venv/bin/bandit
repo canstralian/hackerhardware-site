@@ -1,4 +1,6 @@
-#!/home/runner/work/hackerhardware-site/hackerhardware-site/api/venv/bin/python3
+#!/bin/sh
+'''exec' "$(dirname "$0")/python3" "$0" "$@"
+' '''
 import sys
 from bandit.cli.main import main
 if __name__ == '__main__':
