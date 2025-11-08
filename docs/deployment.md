@@ -74,23 +74,53 @@ kubectl apply -f k8s/
 
 ### Cloudflare Configuration
 
-1. Install Wrangler CLI:
+#### Cloudflare Workers Deployment
+
+The repository is configured for automatic deployment via Cloudflare's Git integration. The worker will be automatically deployed when changes are pushed to the main branch.
+
+**Configuration Files:**
+- `wrangler.toml` - Worker configuration (at repository root)
+- `cloudflare/workers.js` - Worker script
+
+**Manual Deployment (Optional):**
+
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Install Wrangler CLI globally (optional):
 ```bash
 npm install -g wrangler
 ```
 
-2. Authenticate:
+3. Authenticate:
 ```bash
 wrangler login
 ```
 
-3. Configure wrangler.toml with your account details
+4. Configure Cloudflare settings (via dashboard or environment variables):
+   - CLOUDFLARE_ACCOUNT_ID
+   - CLOUDFLARE_API_TOKEN
+   - KV Namespace for rate limiting (optional)
 
-4. Deploy worker:
+5. Deploy worker:
 ```bash
-cd cloudflare
-wrangler publish
+wrangler deploy
+# or
+npm run deploy
 ```
+
+**Git Integration (Recommended):**
+
+Cloudflare automatically deploys the worker when changes are pushed to the configured branch. The `wrangler.toml` at the repository root is automatically detected and used for deployment.
+
+**Environment Variables:**
+
+Configure these in the Cloudflare dashboard under Workers settings:
+- Account ID: Set in dashboard or via CLOUDFLARE_ACCOUNT_ID
+- Zone ID: Set in dashboard or via CLOUDFLARE_ZONE_ID  
+- KV Namespace: Configure in dashboard if rate limiting is needed
 
 ### Edge Node Deployment
 
