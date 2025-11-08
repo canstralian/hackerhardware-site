@@ -1,0 +1,89 @@
+# HackerHardware.net - Edge Computing AI Cybersecurity Platform
+
+A living ecosystem that merges edge computing, AI, and cybersecurity into adaptive, self-healing infrastructure following the philosophy of edge autonomy.
+
+## 🏗️ Architecture Overview
+
+This project implements a modular, scalable foundation combining:
+- Static front-end deployed on Cloudflare Pages
+- FastAPI backend with comprehensive API layer
+- Cloudflare Workers for edge logic processing
+- GitHub Actions for CI/CD automation
+- Zero Trust security model with WAF protection
+- Comprehensive documentation and template system
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+ and npm
+- Python 3.11+
+- Cloudflare account with Workers and Pages access
+- GitHub repository with Actions enabled
+
+### Setup
+```bash
+# Clone and install dependencies
+git clone <repository-url>
+cd hackerhardware-net
+npm install
+pip install -r requirements.txt
+
+# Configure Cloudflare
+npx wrangler login
+cp wrangler.example.toml wrangler.toml
+# Edit wrangler.toml with your account details
+
+# Start development servers
+npm run dev:frontend  # Frontend development
+npm run dev:backend   # FastAPI backend
+npm run dev:worker    # Cloudflare Worker
+```
+
+### Deployment
+```bash
+# Deploy to production
+npm run deploy:all
+
+# Deploy individual components
+npm run deploy:frontend  # Cloudflare Pages
+npm run deploy:backend   # Backend API
+npm run deploy:worker    # Edge Workers
+```
+
+## 📁 Project Structure
+
+```
+hackerhardware-net/
+├── frontend/           # Static site and UI components
+├── backend/           # FastAPI application
+├── edge/             # Cloudflare Workers
+├── security/         # Security policies and rulesets
+├── docs/            # System documentation
+├── templates/       # Reusable templates
+├── .github/         # CI/CD workflows
+└── scripts/         # Automation scripts
+```
+
+## 🛡️ Security Features
+
+- Zero Trust architecture implementation
+- Content Security Policy headers
+- Web Application Firewall rules
+- Automated security scanning
+- Tokenized deployments
+- Build integrity verification
+
+## 📖 Documentation
+
+- [Architecture Guide](docs/architecture.md) - System design and components
+- [API Documentation](docs/api.md) - FastAPI endpoints and usage
+- [Security Model](docs/security.md) - Zero Trust implementation
+- [Deployment Guide](docs/deployment.md) - CI/CD and infrastructure
+
+## 🤝 Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines and submission process.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
