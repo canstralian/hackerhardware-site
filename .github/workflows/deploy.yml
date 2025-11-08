@@ -17,16 +17,33 @@ jobs:
         with:
           node-version: 18
 
-      # Note: Corepack and pnpm are ready for future SvelteKit migration
-      # Currently deploying static site from root directory
-      # - name: Enable Corepack
-      #   run: corepack enable
-      
-      # - name: Install dependencies
-      #   run: corepack prepare pnpm@latest --activate && pnpm install
-      
-      # - name: Build
-      #   run: pnpm build
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: |
+          if [ -f "package.json" ]; then
+            corepack prepare pnpm@latest --activate && pnpm install
+          else
+            echo "No package.json found - skipping dependency installation"
+          fi
+
+      - name: Build
+        run: |
+          if [ -f "package.json" ]; then
+            pnpm build
+          else
+            echo "No package.json found - skipping build step"
+          fi
+
+      - name: Determine deployment directory
+        id: deploy-dir
+        run: |
+          if [ -d ".svelte-kit/cloudflare" ]; then
+            echo "directory=.svelte-kit/cloudflare" >> $GITHUB_OUTPUT
+          else
+            echo "directory=." >> $GITHUB_OUTPUT
+          fi
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
@@ -34,8 +51,7 @@ jobs:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           projectName: "hackerhardware-site"
-          directory: "."
-          # When migrating to SvelteKit, change directory to: ".svelte-kit/cloudflare"
+          directory: ${{ steps.deploy-dir.outputs.directory }}
 
       - name: Validate Cloudflare Authentication
         run: |
