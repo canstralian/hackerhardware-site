@@ -4,6 +4,12 @@ __pycache__/
 *$py.class
 *.so
 
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
 # Logs
 logs
 *.log
