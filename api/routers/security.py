@@ -73,8 +73,8 @@ async def initiate_security_scan(scan: SecurityScan):
 @router.get("/posture")
 async def security_posture():
     """Get overall security posture"""
-    active_threats = [t for t in threat_log if t.status == "active"]
-    critical_threats = [t for t in active_threats if t.severity == "critical"]
+    active_threats = [t for t in threat_log if (t.status if hasattr(t, 'status') else t.get('status')) == "active"]
+    critical_threats = [t for t in active_threats if (t.severity if hasattr(t, 'severity') else t.get('severity')) == "critical"]
     
     return {
         "status": "monitoring",
