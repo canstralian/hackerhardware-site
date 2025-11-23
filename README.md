@@ -1,122 +1,150 @@
 ## HackerHardware.net
 
-## Living Edge-Intelligence Ecosystem
+Living Edge-Intelligence Ecosystem
 
-HackerHardware.net is a cutting-edge digital-physical lab that merges hardware, AI, and cybersecurity into self-optimizing infrastructure. It combines Raspberry Pi clusters, FastAPI backends, and Cloudflare-routed automation under a zero-trust security perimeter.
 
-## Architecture
+⸻
 
-### Core Components
+### Overview
 
-- **Edge Computing Layer**: Raspberry Pi cluster nodes for distributed processing
-- **API Layer**: FastAPI backend for AI and cybersecurity integration
-- **Security Layer**: Zero-trust perimeter with continuous threat monitoring
-- **Intelligence Layer**: Self-learning and adaptive defense mechanisms
-- **Routing Layer**: Cloudflare-based routing and automation
+HackerHardware.net is a digital-physical experimentation lab combining edge computing, AI-driven cybersecurity, and zero-trust networking. The project blends Raspberry Pi clusters, FastAPI microservices, Cloudflare routing, and adaptive intelligence into a self-optimizing, self-defending system.
+
+This ecosystem is open-source by design. If you build hardware, write Python, tune ML models, or just enjoy shaping the future of edge security, you’re welcome here.
+
+⸻
+
+### Architecture
+
+Core Components
+	•	Edge Computing Layer
+Raspberry Pi 4/5 cluster for distributed, fault-tolerant processing.
+	•	API Layer
+FastAPI backend integrating AI inference, telemetry, and threat analysis.
+	•	Security Layer
+Zero-trust perimeter with mTLS, JWT authorization, and continuous verification.
+	•	Intelligence Layer
+Adaptive defense, anomaly detection, self-optimization, and behavioral modeling.
+	•	Routing Layer
+Cloudflare for secure routing, DDoS mitigation, and programmable automation.
+
+⸻
 
 ### Technology Stack
+	•	Backend: FastAPI (Python 3.9+)
+	•	Edge Devices: Raspberry Pi 4/5
+	•	Containers: Docker & Docker Compose
+	•	Security: Zero-trust, mTLS, JWT
+	•	Monitoring: Prometheus, Grafana, custom telemetry pipelines
+	•	CI/CD: GitHub Actions
+	•	Infrastructure: Cloudflare Workers & Pages
 
-- **Backend**: FastAPI (Python 3.9+)
-- **Edge Devices**: Raspberry Pi 4/5 clusters
-- **Container Orchestration**: Docker & Docker Compose
-- **Security**: Zero-trust architecture, mTLS, JWT authentication
-- **Monitoring**: Prometheus, Grafana, custom telemetry
-- **CI/CD**: GitHub Actions
-- **Infrastructure**: Cloudflare for routing and DDoS protection
+⸻
 
-## Project Structure
+### Project Structure
 
-```
 /
-├── api/                    # FastAPI backend
-├── edge/                   # Raspberry Pi cluster configs
-├── security/              # Zero-trust security components
-├── intelligence/          # AI and adaptive defense
-├── monitoring/            # Observability and metrics
-├── cloudflare/            # Cloudflare configurations
-├── docker/                # Container configurations
-└── docs/                  # Documentation
-```
+├── api/                # FastAPI backend
+├── edge/               # Raspberry Pi cluster configs
+├── security/           # Zero-trust security logic
+├── intelligence/       # AI & adaptive defense
+├── monitoring/         # Metrics & observability
+├── cloudflare/         # Routing automation
+├── docker/             # Container configs
+└── docs/               # Documentation
 
-## Features
 
-### 🔒 Zero-Trust Security
-- Mutual TLS authentication
-- JWT-based API authorization
-- Network segmentation
-- Continuous security monitoring
+⸻
 
-### 🤖 AI-Powered Intelligence
-- Anomaly detection
-- Threat prediction
-- Self-optimization algorithms
-- Network behavior analysis
+### Features
 
-### 🌐 Edge Computing
-- Distributed Raspberry Pi nodes
-- Local processing capabilities
-- Failover and redundancy
-- Resource optimization
+🔒 Zero-Trust Security
+	•	Mutual TLS
+	•	JWT authentication
+	•	Network segmentation
+	•	Continuous security validation
 
-### 🛡️ Offensive Testing & Adaptive Defense
-- Continuous penetration testing
-- Automated vulnerability scanning
-- Real-time threat response
-- Learning from network behavior
+🤖 AI-Powered Intelligence
+	•	Real-time anomaly detection
+	•	Threat prediction and scoring
+	•	Behavioral network analysis
+	•	Automated system optimization
 
-## Quick Start
+🌐 Edge Computing
+	•	Distributed Pi nodes
+	•	Local inference & processing
+	•	Smart failover
+	•	Resource balancing and auto-tuning
 
-### Prerequisites
+🛡️ Adaptive Defense
+	•	Automated penetration testing
+	•	Continuous vulnerability scanning
+	•	Real-time threat response
+	•	Behavior-driven learning models
 
-- Docker & Docker Compose
-- Python 3.9+
-- Node.js 16+ (for Cloudflare Workers)
-- Raspberry Pi devices (for edge deployment)
+⸻
+
+### Quick Start
+
+Prerequisites
+	•	Docker / Docker Compose
+	•	Python 3.9+
+	•	Node.js 16+ (for Cloudflare Workers)
+	•	Raspberry Pi devices (for edge deployment)
 
 ### Local Development
 
-1. Clone the repository:
-```bash
 git clone https://github.com/canstralian/hackerhardware-site.git
 cd hackerhardware-site
-```
 
-2. Start the backend:
-```bash
+### Start the backend:
+
 cd api
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn main:app --reload
-```
 
-3. Run with Docker Compose:
-```bash
+### Run via Docker Compose:
+
 docker-compose up -d
-```
+
+
+⸻
 
 ### Deployment
 
-See [docs/deployment.md](docs/deployment.md) for detailed deployment instructions.
+Detailed deployment instructions are available in
+📄 docs/deployment.md
 
-#### Required GitHub Secrets for Cloudflare Pages Deployment
+GitHub Secrets for Cloudflare Pages
+	•	CF_API_TOKEN — Cloudflare API token
+	•	CF_ACCOUNT_ID — Cloudflare account ID
 
-Configure the following secrets in your GitHub repository settings (`Settings > Secrets and variables > Actions`):
+See the deployment guide for permissions and setup.
 
-- **CF_API_TOKEN**: Your Cloudflare API token with permissions for Pages deployment
-  - Create at: https://dash.cloudflare.com/profile/api-tokens
-  - Required permissions: Cloudflare Pages (Edit)
-- **CF_ACCOUNT_ID**: Your Cloudflare account ID
-  - Find at: https://dash.cloudflare.com/ (in the URL after selecting your account)
+⸻
 
-## Security
+### Community & Contribution
 
-This project implements a zero-trust security model. See [docs/security.md](docs/security.md) for details.
+HackerHardware.net grows through community creativity:
+	•	Improve the AI models
+	•	Add edge-node modules
+	•	Hard-test the security layers
+	•	Extend the routing automation
+	•	Write docs, examples, or tutorials
+	•	Report bugs, propose features, open PRs
 
-## Contributing
+Every contribution—large or small—helps shape a more resilient, intelligent edge ecosystem.
 
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+⸻
 
-## License
+### Security
 
-MIT License - see [LICENSE](LICENSE) for details.
+The entire platform is built on zero-trust principles.
+Documentation: 📄 docs/security.md
+
+⸻
+
+### License
+
+MIT License — see the LICENSE file for details.
