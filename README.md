@@ -2,6 +2,15 @@
 
 Living Edge-Intelligence Ecosystem
 
+[![GitHub Stars](https://img.shields.io/github/stars/canstralian/hackerhardware-site?style=for-the-badge)](https://github.com/canstralian/hackerhardware-site/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/canstralian/hackerhardware-site?style=for-the-badge)](https://github.com/canstralian/hackerhardware-site/forks)
+[![Issues](https://img.shields.io/github/issues/canstralian/hackerhardware-site?style=for-the-badge)](https://github.com/canstralian/hackerhardware-site/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/canstralian/hackerhardware-site?style=for-the-badge)](https://github.com/canstralian/hackerhardware-site/pulls)
+[![License](https://img.shields.io/github/license/canstralian/hackerhardware-site?style=for-the-badge)](LICENSE)
+[![CI Status](https://img.shields.io/github/actions/workflow/status/canstralian/hackerhardware-site/ci.yml?style=for-the-badge&label=CI)](../../actions)
+
+[![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen?style=for-the-badge)](CONTRIBUTING.md)
+[![Join Discussions](https://img.shields.io/badge/GitHub-Discussions-blue?style=for-the-badge)](../../discussions)
 
 ⸻
 
