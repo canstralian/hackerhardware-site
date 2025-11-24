@@ -68,13 +68,13 @@ async def node_heartbeat(node_id: str, cpu_usage: float, memory_usage: float):
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Node not found"
         )
-    
+
     node = edge_nodes[node_id]
     node.cpu_usage = cpu_usage
     node.memory_usage = memory_usage
     node.last_heartbeat = datetime.utcnow().isoformat()
     node.status = "active"
-    
+
     return {"status": "ok", "node_id": node_id}
 
 
@@ -86,6 +86,6 @@ async def deregister_node(node_id: str):
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Node not found"
         )
-    
+
     del edge_nodes[node_id]
     return {"status": "deleted", "node_id": node_id}

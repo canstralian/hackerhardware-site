@@ -9,7 +9,6 @@ import logging
 
 from routers import health, nodes, security, intelligence
 from core.config import settings
-from core.security import verify_token
 
 # Configure logging
 logging.basicConfig(
@@ -18,12 +17,14 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Application lifespan events"""
     logger.info("Starting HackerHardware.net API")
     yield
     logger.info("Shutting down HackerHardware.net API")
+
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -47,6 +48,7 @@ app.include_router(health.router, prefix="/api/v1", tags=["health"])
 app.include_router(nodes.router, prefix="/api/v1/nodes", tags=["nodes"])
 app.include_router(security.router, prefix="/api/v1/security", tags=["security"])
 app.include_router(intelligence.router, prefix="/api/v1/intelligence", tags=["intelligence"])
+
 
 @app.get("/")
 async def root():

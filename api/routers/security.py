@@ -1,7 +1,7 @@
 """
 Security and threat monitoring endpoints
 """
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, status
 from typing import List
 from datetime import datetime
 from pydantic import BaseModel
@@ -60,7 +60,7 @@ async def report_threat(
 async def initiate_security_scan(scan: SecurityScan):
     """Initiate a security scan"""
     scan_id = f"scan-{datetime.utcnow().timestamp()}"
-    
+
     return {
         "scan_id": scan_id,
         "status": "initiated",
@@ -73,9 +73,16 @@ async def initiate_security_scan(scan: SecurityScan):
 @router.get("/posture")
 async def security_posture():
     """Get overall security posture"""
-    active_threats = [t for t in threat_log if (t.status if hasattr(t, 'status') else t.get('status')) == "active"]
-    critical_threats = [t for t in active_threats if (t.severity if hasattr(t, 'severity') else t.get('severity')) == "critical"]
-    
+    active_threats = [
+        t for t in threat_log
+        if (t.status if hasattr(t, 'status') else t.get('status')) == "active"
+    ]
+    critical_threats = [
+        t for t in active_threats
+        if (t.severity if hasattr(t, 'severity')
+            else t.get('severity')) == "critical"
+    ]
+
     return {
         "status": "monitoring",
         "active_threats": len(active_threats),
